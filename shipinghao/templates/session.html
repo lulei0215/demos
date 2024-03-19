@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ .title }}</title>
+</head>
+<body>
+    <div id="app">
+        session
+       <p>{{.token}}</p>
+   
+       
+    </div>
+
+    <!-- Include Vue.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+
+    <!-- Create a Vue instance -->
+    <script>
+        new Vue({
+            delimiters: ['[[', ']]'], // 更改插值表达式的分隔符
+            el: '#app',
+            data: {
+                message: 'Main website',
+                url: "https://card.wachuang888.cn/qrcode/build?text="+'{{ .url }}'
+            },
+            methods: {
+                requestSession() {
+                    // 假设这里的apiUrl是你实际要请求的接口地址
+                    const apiUrl = '/your-api-url';
+                    
+                    axios.post(apiUrl, { url: this.url, token: this.token })
+                        .then(response => {
+                            // 处理成功响应，例如更新状态
+                            console.log('Success:', response.data);
+                        })
+                        .catch(error => {
+                            // 处理错误响应
+                            console.error('Error:', error);
+                        });
+                }
+            }
+        })
+    </script>
+</body>
+</html>
