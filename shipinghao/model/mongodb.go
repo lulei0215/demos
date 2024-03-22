@@ -13,7 +13,7 @@ import (
 
 func MongoDB() {
 	// 设置MongoDB连接字符串
-	connStr := "mongodb://hehe:JaA5aXDie8myN64w@101.35.227.154:27017/hehe"
+	connStr := ""
 
 	// 设置MongoDB客户端选项
 	clientOptions := options.Client().ApplyURI(connStr)
